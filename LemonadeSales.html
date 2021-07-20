@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Lemonade Sales</title>
+		<meta name="author" content="Alex" />
+		<!-- Date: 2015-04-11 -->
+	</head>
+	<body>
+		<script type="text/javascript">
+		///File: LemonadeSales.html
+		///PROG: Alex Mandigo
+		///PURP: To track sales made at a lemonade stand.
+		
+		var SMALL_LEMON_PRICE = 1.50;
+		var LARGE_LEMON_PRICE = 2.00;
+		var COOKIE_PRICE = 0.75;
+		var REGULAR_TEE = 8.00;
+		var SIGNED_TEE = 15.00;
+		var SMALL_LEMON_SIZE = 12;
+		var LARGE_LEMON_SIZE = 16;
+		var COUNTER_AMT = 1;
+		var ANOTHER_SALE = "Yes";
+		var totalTransactions = 0;
+		var totalOzLemonade = 0;
+		var totalNumChocolate = 0;
+		var totalNumOat = 0;
+		var totalNumTee = 0;
+		var totalSales = 0.00;
+		var currentSelection = "";
+		var currentItemType = "";
+		var currentCost = 0.00;
+		var lemonSize = "";
+		var cookieType = "";
+		var shirtType = "";
+		
+		while (ANOTHER_SALE == "Yes")
+		{
+			///Input
+			currentSelection = prompt("Welcome to our lemonade stand! Would you like to get (L)emonade, a (C)ookie, a (T)-shirt, or (Q)uit?","L");
+			
+			///Conversion
+			currentSelection = currentSelection.toUpperCase();
+			
+			///Calculations
+			switch (currentSelection)
+			{///Start switch
+			case "L":
+				
+				///Input
+				lemonSize = prompt("Would you like a (S)mall or a (L)arge?","L");
+				
+				///Conversion
+				lemonSize = lemonSize.toUpperCase();
+				
+				if (lemonSize == "L")
+				{///Begin first if
+					currentItemType = "16 Oz Lemonade";
+					currentCost = LARGE_LEMON_PRICE;
+					totalOzLemonade = totalOzLemonade + LARGE_LEMON_SIZE;
+				}
+				else
+				{
+					currentItemType = "12 Oz Lemonade";
+					currentCost = SMALL_LEMON_PRICE;
+					totalOzLemonade = totalOzLemonade + SMALL_LEMON_SIZE;
+				}///End second if
+				
+				totalTransactions = totalTransactions + COUNTER_AMT;
+				totalSales = totalSales + currentCost;
+				alert("Okay, you are getting a(n) " + currentItemType + " and that will be $" + currentCost.toFixed(2) + ".");
+				
+			break;
+			
+			case "C":
+			
+				 ///Input
+				 cookieType = prompt("Would you like (C)hocolate chip or (O)atmeal?","C");
+				 	 
+				 ///Conversion
+				 cookieType = cookieType.toUpperCase();
+				 	 
+				 if (cookieType == "O")
+				 {///Begin second if
+				 	 currentItemType = "Oatmeal cookie";
+				 	 totalNumOat = totalNumOat + COUNTER_AMT;
+				 }
+				 else
+				 {
+				 	 currentItemType = "Chocolate chip cookie";
+				 	 totalNumChocolate = totalNumChocolate + COUNTER_AMT;
+				 }///End second if
+				 	 
+				 currentCost = COOKIE_PRICE;
+				 totalTransactions = totalTransactions + COUNTER_AMT;
+				 totalSales = totalSales + currentCost;	
+				 alert("Okay, you are getting a(n) " + currentItemType + " and that will be $" + currentCost.toFixed(2) + "."); 	 
+			break;
+			
+			case "T":
+				     
+				  ///Input
+				  shirtType = prompt("Would you like a (R)egular or (A)utographed shirt?","A");
+				     
+				  ///Conversion
+				  shirtType = shirtType.toUpperCase();
+				     
+				  if (shirtType == "A")
+				  {///Begin third if
+				      currentItemType = "Autographed T-shirt";
+				      currentCost = SIGNED_TEE;
+				  }
+				  else
+				  {
+				      currentItemType = "Regular T-shirt";
+				      currentCost = REGULAR_TEE;
+				  }///End third if
+				          
+				  totalNumTee = totalNumTee +  COUNTER_AMT;
+				  totalTransactions = totalTransactions +  COUNTER_AMT;
+				  totalSales = totalSales + currentCost;
+				  alert("Okay, you are getting a(n) " + currentItemType + " and that will be $" + currentCost.toFixed(2) + ".");
+			break;
+				       
+			case "Q":
+				  
+				  alert("Thank you, and have a great day!");
+				  ANOTHER_SALE = "No";
+            break;
+			
+			default:
+				 alert("You typed " + currentSelection + ". Please only type (L), (C), (T) or (Q).");
+
+		    }///End switch
+		    }///End loop
+			
+			///Output
+			document.write("<b>=======END OF DAY SALES TOTALS=======</b><br>");
+			document.write("* * * * * * * * * * * * * * * * * * * * * * * * * * * * *<br>");
+			document.write("Total number of transactions = " + totalTransactions + "<br>");
+			document.write("Total ounces of lemonade = " + totalOzLemonade + "<br>");
+			document.write("Total number of chocolate = " + totalNumChocolate + "<br>");
+			document.write("Total number of oatmeal = " + totalNumOat + "<br>");
+			document.write("Total number of shirts = " + totalNumTee + "<br>");
+			document.write("     <br>");
+			document.write("<b>The total sales equal $" + totalSales.toFixed(2) + "!</b><br>");
+			document.write("* * * * * * * * * * * * * * * * * * * * * * * * * * * * *<br>");
+			///END PROGRAM
+		</script>
+
+	</body>
+</html>
+
